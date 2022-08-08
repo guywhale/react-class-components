@@ -1,21 +1,28 @@
 import { Fragment, Component } from 'react';
+import UsersContext from '../store/users-context';
 import classes from './UserFinder.module.css';
 import Users from './Users';
 
-const DUMMY_USERS = [
-	{ id: 'u1', name: 'Max' },
-	{ id: 'u2', name: 'Manuel' },
-	{ id: 'u3', name: 'Julie' },
-];
-
 class UserFinder extends Component {
+	// How to set the context. Only per component allowed in classes.
+	static contextType = UsersContext;
+
 	constructor() {
 		super();
 
 		this.state = {
-			filteredUsers: DUMMY_USERS,
+			filteredUsers: [],
 			searchTerm: '',
 		};
+	}
+
+	/**
+	 * componentDidMount runs on first render of component.
+	 * Class component equivalnent od useEffect() with empty dependency
+	 * array.
+	 */
+	componentDidMount() {
+		this.setState({ filteredUsers: this.context.users });
 	}
 
 	/**
