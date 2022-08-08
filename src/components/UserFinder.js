@@ -19,7 +19,7 @@ class UserFinder extends Component {
 	}
 
 	/**
-	 * Equivalent of useEffect(()=>{}, []) hook in class based components.
+	 * Equivalent of useEffect() hook in class based components.
 	 * Takes two parameters: previous props, previous state
 	 */
 	componentDidUpdate(prevProps, prevState) {
